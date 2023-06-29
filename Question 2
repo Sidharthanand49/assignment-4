@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class Solution {
+    public List<List<Integer>> findDisappearedNumbers(int[] nums1, int[] nums2) {
+        Set<Integer> nums1Set = new HashSet<>();
+        Set<Integer> nums2Set = new HashSet<>();
+
+        for (int num : nums1) {
+            nums1Set.add(num);
+        }
+
+        for (int num : nums2) {
+            nums2Set.add(num);
+        }
+
+        Set<Integer> diffNums1 = new HashSet<>();
+        Set<Integer> diffNums2 = new HashSet<>();
+
+        for (int num : nums1) {
+            if (!nums2Set.contains(num)) {
+                diffNums1.add(num);
+            }
+        }
+
+        for (int num : nums2) {
+            if (!nums1Set.contains(num)) {
+                diffNums2.add(num);
+            }
+        }
+
+        List<List<Integer>> answer = new ArrayList<>();
+        answer.add(new ArrayList<>(diffNums1));
+        answer.add(new ArrayList<>(diffNums2));
+
+    
+    }
+}
